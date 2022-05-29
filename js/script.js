@@ -128,25 +128,30 @@ function tagClickHandler(event) {
     const tag = href.replace('#tag-', '');
     // console.log(tag);
     /* find all tag links with class active */
-    document.querySelectorAll('.post-tags .list .active').classList.remove('active');
-    clickedElement.classList.add('active');
-    const activeTag = document.querySelectorAll('a.active[href^="#tag-"]');
-    console.log(activeTag);
+    const activeTags = document.querySelectorAll('a.active[href^="#tag-"]');
+
     /* START LOOP: for each active tag link */
 
+    // generateTitleLinks('[data-tags~="' + tag + '"]');
     /* remove class active */
-
+    for (let activeTag of activeTags) {
+        activeTag.classList.remove("active");
+    }
     /* END LOOP: for each active tag link */
 
     /* find all tag links with "href" attribute equal to the "href" constant */
-
+    const foundTagLinks = document.querySelectorAll('a[href="' + href + '"]');
     /* START LOOP: for each found tag link */
 
     /* add class active */
-
+    for (let foundTagLink of foundTagLinks) {
+        foundTagLink.classList.add("active");
+    }
+    // console.log(activeTags); // lepiej sprawdzić w DOM czy klasy się dodają !!!
     /* END LOOP: for each found tag link */
 
     /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags() {
