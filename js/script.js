@@ -183,18 +183,10 @@ generateAuthors();
 
 function authorClickHandler(e) {
     e.preventDefault();
-    // const href = this.getAttribute("href");
-    console.log(this);
-    const articles = document.querySelectorAll(optArticleSelector);
-    // for (let article of articles) {
-    const articleAuthor = this.getAttribute('data-author')
-    // console.log(articleAuthor);
+    const articleAuthortag = this.firstChild.getAttribute('href')
+    const articleAuthor = articleAuthortag.replace("#", "");
+    console.log(articleAuthortag);
     generateTitleLinks('[data-author="' + articleAuthor + '"]');
-    // }
-
-    // const href = this.getAttribute('href');
-    // console.log(href);
-
 }
 
 function addClickListenersToAuthors() {
