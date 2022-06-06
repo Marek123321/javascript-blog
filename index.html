@@ -251,6 +251,22 @@
       <script id="template-article-link" type="text/x-handlebars-template">
         <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
       </script> <!-- pierwszy szablon -->
+      <script id="template-tag-link" type="text/x-handlebars-template">
+        <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script> <!-- drugi szablon -->
+      <script id="template-author-link" type="text/x-handlebars-template">
+      <li><a href="#{{ id }}"><span>{{ title }}</span></a></li>
+      </script> <!-- trzeci szablon -->
+      <script id="template-tag-cloud-link" type="text/x-handlebars-template">
+        {{#each tags}}
+        <li><a href="#tag-{{ tag }}" class="{{className}}"><span>{{ tag }}</span></a></li>
+        {{/each}}
+      </script> <!-- czwarty szablon -->
+      <script id="template-author-cloud-link" type="text/x-handlebars-template">
+        {{#each tags}}
+        <li><a href="#author-{{ author }}" class="{{className}}"><span>{{ author }}</span></a></li>
+        {{/each}}
+      </script> <!-- piąty szablon -->
       <script src="js/script.js"></script>
 </body>
 </html>
