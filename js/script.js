@@ -99,7 +99,7 @@ function generateTags() {
                 id: tag,
                 title: tag
             };
-            const linkHTML = templates.articleLink(linkHTMLData);
+            const linkHTML = templates.tagLink(linkHTMLData);
             tagsWrapper.innerHTML += linkHTML + " ";
             // console.log(tag);
             /* [NEW] check if this link is NOT already in allTags */
@@ -170,7 +170,7 @@ function calculateAuthorParams(authors) {
             params.min = authors[author];
         }
     }
-    console.log(params);
+    // console.log(params);
 
     return params;
 }
@@ -188,7 +188,7 @@ function generateAuthors() {
             id: articleAuthor,
             title: authorHTML
         };
-        const linkHTML = templates.articleLink(linkHTMLData);
+        const linkHTML = templates.authorLink(linkHTMLData);
         authorWrapper.innerHTML = linkHTML;
         // console.log(authorWrapper);
         // console.log(articleAuthor);
@@ -202,13 +202,13 @@ function generateAuthors() {
         // console.log(allAuthors[articleAuthor]);
         const authorList = document.querySelector(optAuthorListSelector);
         const authorParams = calculateAuthorParams(allAuthors);
-        let allAuthorHTML = '';
+        // let allAuthorHTML = '';
         const allAuthorsData = {
             authors: []
         };
         for (let author in allAuthors) {
             const authorLinkHTML = `<li><a href="#tag-${author}" class="${calculateTagClass(allAuthors[author], authorParams)}">${author}</a></li>`;
-            allAuthorHTML += authorLinkHTML;
+            // allAuthorHTML += authorLinkHTML;
             allAuthorsData.authors.push({
                 author: author,
                 count: allAuthors[author],
@@ -216,7 +216,8 @@ function generateAuthors() {
             });
         }
         // authorList.innerHTML = allAuthorHTML;
-        // authorList.innerHTML = templates.authourCloudLink(allAuthorsData);
+        authorList.innerHTML = templates.authourCloudLink(allAuthorsData);
+        // console.log(allAuthorsData);
         // console.log(authorList.innerHTML);
     }
 }
